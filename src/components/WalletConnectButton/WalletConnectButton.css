@@ -1,0 +1,17 @@
+.user-avatar-icon:hover{
+    cursor: pointer;
+}
+
+.hide-on-desktop{
+display: none !important;
+}
+
+@media (max-width: 768px) {
+    .hide-on-mobile{
+        display: none !important;
+    }
+
+    .hide-on-desktop{
+        display: block !important;
+        }
+}

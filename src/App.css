@@ -1,0 +1,16 @@
+.main-footer{
+  background-color: #111;
+}
+
+.ant-notification-notice{
+  background-color: #111 !important;
+}
+
+.ant-notification-notice .ant-notification-notice-description,
+.ant-notification-notice .ant-notification-notice-message{
+  color: #fff !important;
+}
+
+.ant-notification-notice .ant-notification-notice-close-x svg{
+  fill: #fff
+}
