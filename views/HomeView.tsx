@@ -28,12 +28,13 @@ const HomeView: React.FC = () => {
       const options = {
         headers: {
           accept: "application/json",
-          authorization:
-            "Basic emtfZGV2X2JkNzgxMGMzMTIwMjQ0NDdiZDZhYWE5NDg3YjE0ZTg3Og==",
+          authorization: `Basic ${process.env.NEXT_PUBLIC_ZERION_API_KEY}`,
         },
       };
       const response = await axios.get(
-        `https://api.zerion.io/v1/wallets/${`${address}`}/portfolio?currency=btc`,
+        `${
+          process.env.NEXT_PUBLIC_ZERION_BASE_URL
+        }/wallets/${`${address}`}/portfolio?currency=btc`,
         options
       );
 
@@ -69,7 +70,7 @@ const HomeView: React.FC = () => {
   }, [profileInBTC]);
 
   return (
-    <div style={{marginBottom:"20px"}}>
+    <div style={{ marginBottom: "20px" }}>
       <Row>
         <Col
           className="col-hidden"
@@ -159,6 +160,7 @@ const HomeView: React.FC = () => {
               fontWeight: "bold",
               textAlign: "center",
               marginBottom: "20px",
+              color:"#4648d8"
             }}
           >
             Mint Your NFT
