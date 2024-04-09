@@ -6,6 +6,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useAccount, useChainId } from "wagmi";
 import axios from "axios";
+import { ColorFormat } from "antd/es/color-picker/interface";
 
 const HomeView: React.FC = () => {
   const { address } = useAccount();
@@ -160,7 +161,7 @@ const HomeView: React.FC = () => {
               fontWeight: "bold",
               textAlign: "center",
               marginBottom: "20px",
-              color:"#4648d8"
+              color:"#F6931A"
             }}
           >
             Mint Your NFT
@@ -226,6 +227,7 @@ const HomeView: React.FC = () => {
                 <Link
                   target="_blank"
                   href="https://opensea.io/collection/ceylon-crypto-meetup"
+                  style={{color:"#F6931A"}}
                 >
                   Genesis CCM NFT
                 </Link>{" "}

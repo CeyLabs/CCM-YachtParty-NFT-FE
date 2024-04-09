@@ -69,7 +69,7 @@ const MintingCard = () => {
             size="large"
             onClick={() => handleChange(mintingNftCount, "sub")}
             style={{
-              backgroundColor: "#4648d8",
+              backgroundColor: "#F6931A",
               border: "none",
               display: "flex",
               justifyContent: "center",
@@ -87,7 +87,7 @@ const MintingCard = () => {
           <Button
             size="large"
             onClick={() => handleChange(mintingNftCount, "add")}
-            style={{ backgroundColor: "#4648d8", border: "none" }}
+            style={{ backgroundColor: "#F6931A", border: "none" }}
           >
             <PlusOutlined />
           </Button>
@@ -174,7 +174,7 @@ const MintingCard = () => {
             size="large"
             type="primary"
             style={{
-              backgroundColor: "#4648d8",
+              backgroundColor: "#F6931A",
               fontWeight: "bold",
               width: "100%",
             }}

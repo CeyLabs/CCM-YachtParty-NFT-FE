@@ -47,7 +47,7 @@ export const CustomConnectionButton = () => {
                     <Button
                       size="large"
                       onClick={openConnectModal}
-                      style={{ backgroundColor: "#4648d8" }}
+                      style={{ backgroundColor: "#F6931A" }}
                     >
                       Connect Wallet
                     </Button>
@@ -68,7 +68,7 @@ export const CustomConnectionButton = () => {
                     <Button
                       size="large"
                       onClick={openChainModal}
-                      style={{ backgroundColor: "#4648d8" }}
+                      style={{ backgroundColor: "#F6931A" }}
                     >
                       Wrong network
                     </Button>
@@ -92,7 +92,7 @@ export const CustomConnectionButton = () => {
                       display: "flex",
                       alignItems: "center",
                       gap: "2px",
-                      backgroundColor: "#4648d8",
+                      backgroundColor: "#F6931A",
                     }}
                     className="mobile-hidden"
                   >
@@ -130,7 +130,7 @@ export const CustomConnectionButton = () => {
                       justifyContent: "center",
                       alignItems: "center",
                       gap: "2px",
-                      backgroundColor: "#4648d8",
+                      backgroundColor: "#F6931A",
                     }}
                   >
                     {chain.hasIcon && (
