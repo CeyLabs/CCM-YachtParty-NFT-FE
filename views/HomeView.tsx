@@ -6,7 +6,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useAccount, useChainId } from "wagmi";
 import axios from "axios";
-import { ColorFormat } from "antd/es/color-picker/interface";
+import { isDiscountedCheck } from "@/services/blockchain.service";
+import { Hex } from "viem";
 
 const HomeView: React.FC = () => {
   const { address } = useAccount();
@@ -23,6 +24,7 @@ const HomeView: React.FC = () => {
   const [holdingNftsDisabled, setHoldingNftsDisabled] = useState(true);
 
   const [profileInBTC, setProfileInBTC] = useState(0);
+  const [isDiscounted, setIsDiscounted] = useState<boolean>(false);
 
   const getProfileInBTC = async () => {
     try {
@@ -54,9 +56,15 @@ const HomeView: React.FC = () => {
     }
   };
 
+  const fetchIsDiscounted = async () => {
+    const data = await isDiscountedCheck(address as Hex);
+    setIsDiscounted(data || false);
+  };
+
   useEffect(() => {
     if (address) {
       getProfileInBTC();
+      fetchIsDiscounted();
     }
   }, [address, chainId]);
 
@@ -69,6 +77,16 @@ const HomeView: React.FC = () => {
       setPortfolioBalanceDisabled(true);
     }
   }, [profileInBTC]);
+
+  useEffect(() => {
+    if (isDiscounted) {
+      setHoldingNftsChecked(true);
+      setHoldingNftsDisabled(false);
+    } else {
+      setHoldingNftsChecked(false);
+      setHoldingNftsDisabled(true);
+    }
+  }, [isDiscounted]);
 
   return (
     <div style={{ marginBottom: "20px" }}>
@@ -161,7 +179,7 @@ const HomeView: React.FC = () => {
               fontWeight: "bold",
               textAlign: "center",
               marginBottom: "20px",
-              color:"#F6931A"
+              color: "#F6931A",
             }}
           >
             Mint Your NFT

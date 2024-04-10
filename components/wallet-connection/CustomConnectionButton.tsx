@@ -45,9 +45,10 @@ export const CustomConnectionButton = () => {
                     }}
                   >
                     <Button
+                      className="orangeButton"
                       size="large"
                       onClick={openConnectModal}
-                      style={{ backgroundColor: "#F6931A" }}
+                      style={{ backgroundColor: "#F6931A"}}
                     >
                       Connect Wallet
                     </Button>
@@ -123,6 +124,7 @@ export const CustomConnectionButton = () => {
                     <div> {chain.name}</div>
                   </Button>
                   <Button
+                    className="orangeButton"
                     size="large"
                     onClick={openAccountModal}
                     style={{

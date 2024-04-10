@@ -30,8 +30,8 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
-  appName: "RainbowKit demo",
-  projectId: "YOUR_PROJECT_ID",
+  appName: "CCM",
+  projectId: "101b478dc0f793d70c8a358847001621",
   wallets: [
     ...wallets,
     {
@@ -47,7 +47,7 @@ const config = getDefaultConfig({
     base,
     bsc,
     bscTestnet,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
+    sepolia
   ],
   ssr: true,
 });
