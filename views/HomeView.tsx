@@ -123,7 +123,7 @@ const HomeView: React.FC = () => {
                 height={20}
               />
               <div style={{ fontSize: "16px" }}>
-                Sri Lanka’s First yacht Party
+                Ceylon Halving Yacht Party
               </div>
             </div>
             <div
@@ -141,7 +141,7 @@ const HomeView: React.FC = () => {
                 height={20}
               />
               <div style={{ fontSize: "16px" }}>
-                Sri Lanka’s First yacht Party
+                Ceylon Halving Yacht Party
               </div>
             </div>
             <div
@@ -159,7 +159,7 @@ const HomeView: React.FC = () => {
                 height={20}
               />
               <div style={{ fontSize: "16px" }}>
-                Sri Lanka’s First yacht Party
+                Ceylon Halving Yacht Party
               </div>
             </div>
           </Space>
@@ -286,7 +286,7 @@ const HomeView: React.FC = () => {
                 height={20}
               />
               <div style={{ fontSize: "16px" }}>
-                Sri Lanka’s First yacht Party
+                Ceylon Halving Yacht Party
               </div>
             </div>
             <div
@@ -304,7 +304,7 @@ const HomeView: React.FC = () => {
                 height={20}
               />
               <div style={{ fontSize: "16px" }}>
-                Sri Lanka’s First yacht Party
+                Ceylon Halving Yacht Party
               </div>
             </div>
             <div
@@ -322,7 +322,7 @@ const HomeView: React.FC = () => {
                 height={20}
               />
               <div style={{ fontSize: "16px" }}>
-                Sri Lanka’s First yacht Party
+                Ceylon Halving Yacht Party
               </div>
             </div>
           </Space>
