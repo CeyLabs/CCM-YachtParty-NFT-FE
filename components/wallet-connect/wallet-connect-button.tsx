@@ -1,5 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Button, Image } from "antd";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+
 export const CustomConnectionButton = () => {
   return (
     <ConnectButton.Custom>
@@ -45,9 +47,9 @@ export const CustomConnectionButton = () => {
                     }}
                   >
                     <Button
-                      size="large"
+                      variant="default"
+                      className="rounded-full bg-[#061021] text-white hover:bg-[#08273A] hover:text-white"
                       onClick={openConnectModal}
-                      style={{ backgroundColor: "#F6931A" }}
                     >
                       Connect Wallet
                     </Button>
@@ -65,10 +67,11 @@ export const CustomConnectionButton = () => {
                       height: "62px",
                     }}
                   >
+
                     <Button
-                      size="large"
                       onClick={openChainModal}
-                      style={{ backgroundColor: "#F6931A" }}
+                      variant="default"
+                      className="rounded-full bg-[#061021] text-white hover:bg-[#08273A] hover:text-white"
                     >
                       Wrong network
                     </Button>
@@ -76,41 +79,21 @@ export const CustomConnectionButton = () => {
                 );
               }
               return (
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "end",
-                    gap: 12,
-                    height: "62px",
-                  }}
-                >
+                <div className="flex space-x-1">
                   <Button
-                    size="large"
+
                     onClick={openChainModal}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "2px",
-                      backgroundColor: "#F6931A",
-                    }}
-                    className="mobile-hidden"
+                    variant="default"
+                    className="hidden sm:flex rounded-full bg-[#061021] text-white hover:bg-[#08273A] hover:text-white mobile-hidden"
                   >
                     {chain.hasIcon && (
-                      <div
-                        style={{
-                          background: chain.iconBackground,
-                          width: 18,
-                          height: 18,
-                          borderRadius: 999,
-                          overflow: "hidden",
-                        }}
-                      >
+                      <div className="mt-3 mr-1">
                         {chain.iconUrl && (
                           <Image
-                            preview={false}
                             alt={chain.name ?? "Chain icon"}
                             src={chain.iconUrl}
+                            width={18}
+                            height={18}
                             style={{
                               width: "18px",
                               height: "18px",
@@ -120,33 +103,20 @@ export const CustomConnectionButton = () => {
                         )}
                       </div>
                     )}
-                    <div> {chain.name}</div>
+                    <div className="hidden sm:block"> {chain.name} </div>
                   </Button>
                   <Button
-                    size="large"
                     onClick={openAccountModal}
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      gap: "2px",
-                      backgroundColor: "#F6931A",
-                    }}
+                    variant="default"
+                    className="rounded-full bg-[#061021] text-white hover:bg-[#08273A] hover:text-white"
                   >
                     {chain.hasIcon && (
-                      <div
-                        style={{
-                          background: chain.iconBackground,
-                          width: 18,
-                          height: 18,
-                          borderRadius: 999,
-                          overflow: "hidden",
-                        }}
-                        className="pc-hidden"
-                      >
+                      <div className="mt-3 mr-1 block sm:hidden">
                         {chain.iconUrl && (
                           <Image
                             alt={chain.name ?? "Chain icon"}
+                            width={18}
+                            height={18}
                             src={chain.iconUrl}
                             style={{
                               width: 18,
