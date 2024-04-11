@@ -140,7 +140,7 @@ export const getUSDTTokenDecimals = async () => {
   }
 };
 
-export const getIsApprovedUSDT = async (address: string) => {
+export const getApprovedUSDTAmount = async (address: string) => {
   try {
     const result = await USDTContract.read.allowance([
       address,
@@ -152,7 +152,7 @@ export const getIsApprovedUSDT = async (address: string) => {
   }
 };
 
-export const getIsApprovedUSDC = async (address: string) => {
+export const getApprovedUSDCAmount = async (address: string) => {
   try {
     const result = await USDCContract.read.allowance([
       address,
