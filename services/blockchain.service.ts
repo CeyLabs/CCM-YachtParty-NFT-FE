@@ -139,3 +139,27 @@ export const getUSDTTokenDecimals = async () => {
     console.log("Error while fetching usdt token decimals", error);
   }
 };
+
+export const getIsApprovedUSDT = async (address: string) => {
+  try {
+    const result = await USDTContract.read.allowance([
+      address,
+      NFT_CONTRACT_ADDRESS,
+    ]);
+    return result;
+  } catch (error) {
+    console.log("Error while checking is approved usdt", error);
+  }
+};
+
+export const getIsApprovedUSDC = async (address: string) => {
+  try {
+    const result = await USDCContract.read.allowance([
+      address,
+      NFT_CONTRACT_ADDRESS,
+    ]);
+    return result;
+  } catch (error) {
+    console.log("Error while checking is approved usdc", error);
+  }
+}
