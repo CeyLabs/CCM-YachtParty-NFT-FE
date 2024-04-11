@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { EvervaultCard, Icon } from "@/components/ui/evervault-card";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -21,7 +21,7 @@ import {
   USDT_CONTRACT_ADDRESS,
 } from "@/config/blockchain";
 import { formatEther, formatUnits, Hex, parseEther, parseUnits } from "viem";
-import { useAccount, useConfig } from "wagmi";
+import { useAccount, useCall, useConfig } from "wagmi";
 import { writeContract, waitForTransactionReceipt } from "@wagmi/core";
 import { Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
@@ -105,36 +105,39 @@ const CoinSelectorDropdown = ({
 
 const MintingCard = () => {
   const [isNFTMinting, setIsNFTMinting] = useState<boolean>(false);
-  const config = useConfig();
-  const { toast } = useToast();
-  const router = useRouter();
-  const { address } = useAccount();
-
-  const [maxSupply, setMaxSupply] = useState<string | undefined>("0");
-  const [ethPrice, setEthPrice] = useState("0");
-  const [discountEthPrice, setDiscountEthPrice] = useState("0");
-  const [usdPrice, setUsdPrice] = useState("0");
-  const [discountUsdPrice, setDiscountUsdPrice] = useState("0");
-  const [physicalAttendeeCount, setPhysicalAttendeeCount] = useState(0);
-  const [virtualAttendeeCount, setVirtualAttendeeCount] = useState(0);
+  const [isApproving, setIsApproving] = useState<boolean>(false);
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(false);
   const [isDiscounted, setIsDiscounted] = useState<boolean>(false);
   const [isVirtualAttendee, setIsVirtualAttendee] = useState<boolean>(false);
+
+  const config = useConfig();
+  const router = useRouter();
+
+  const { toast } = useToast();
+  const { address } = useAccount();
+
+  const [maxSupply, setMaxSupply] = useState<number>(0);
+  const [physicalAttendeeCount, setPhysicalAttendeeCount] = useState(0);
+  const [virtualAttendeeCount, setVirtualAttendeeCount] = useState(0);
+  
+  const [ethPricePerToken, setEthPricePerToken] = useState("0");
+  const [discountEthPrice, setDiscountEthPrice] = useState("0");
+  const [usdPrice, setUsdPrice] = useState("0");
+  const [discountUsdPrice, setDiscountUsdPrice] = useState("0");
   const [selectedCoin, setSelectedCoin] = useState<string>("0");
-  const [totalEthPrice, setTotalEthPrice] = useState("0");
+  const [totalPrice, setTotalPrice] = useState("0");
   const [approvedAmount, setApprovedAmount] = useState("");
-  const [isApproving, setIsApproving] = useState<boolean>(false);
 
   // GET PHYSICAL TICKET MAX SUPPLY
   const fetchMaxSupply = async () => {
     const data = await getMaxSupply();
-    setMaxSupply(data?.toString());
+    setMaxSupply(Number(data));
   };
 
   // GET ETH PRICE
   const fetchEthPriceForToken = async () => {
     const data = await getETHPriceForToken();
-    setEthPrice(formatEther(data as bigint));
+    setEthPricePerToken(formatEther(data as bigint));
   };
 
   // GET DISCOUNTED ETH PRICE
@@ -144,7 +147,7 @@ const MintingCard = () => {
   };
 
   // GET USD PRICE
-  const fetchUSDPriceForToken = async () => {
+  const fetchUSDPriceForToken = useCallback(async () => {
     let decimal;
     if (selectedCoin === "1") {
       decimal = await getUSDTTokenDecimals();
@@ -154,10 +157,10 @@ const MintingCard = () => {
     }
     const data = await getUSDPriceForToken();
     setUsdPrice(formatUnits(data as bigint, decimal as number));
-  };
+  }, [selectedCoin]);
 
   // GET DISCOUNTED USD PRICE
-  const fetchUSDDiscountPriceForToken = async () => {
+  const fetchUSDDiscountPriceForToken = useCallback(async () => {
     let decimal;
     if (selectedCoin === "1") {
       decimal = await getUSDTTokenDecimals();
@@ -167,7 +170,7 @@ const MintingCard = () => {
     }
     const data = await getUSDDiscountPriceForToken();
     setDiscountUsdPrice(formatUnits(data as bigint, decimal as number));
-  };
+  }, [selectedCoin]);
 
   // GET PHYSICAL TICKET COUNT
   const fetchPhysicalAttendeeCount = async () => {
@@ -182,39 +185,39 @@ const MintingCard = () => {
   };
 
   // CHECK IF ADDRESS IS WHITELISTED
-  const fetchIsWhitelisted = async () => {
+  const fetchIsWhitelisted = useCallback(async () => {
     const data = await isWhitelistedCheck(address as Hex);
     setIsWhitelisted(data as boolean);
-  };
+  }, [address]);
 
   // CHECK IF ADDRESS IS DISCOUNTED
-  const fetchIsDiscounted = async () => {
+  const fetchIsDiscounted = useCallback(async () => {
     const data = await isDiscountedCheck(address as Hex);
     setIsDiscounted(data as boolean);
-  };
+  }, [address]);
 
-  // CHECK IF ADDRESS HAVE ALLOWENCE IN USDC
-  const fetchApprovedUSDCAmount = async () => {
+  // CHECK IF ADDRESS HAVE ALLOWANCE IN USDC
+  const fetchApprovedUSDCAmount = useCallback(async () => {
     const decimal = await getUSDCTokenDecimals();
     const data = await getApprovedUSDCAmount(address as Hex);
     console.log("data", formatUnits(data as bigint, decimal as number));
     setApprovedAmount(formatUnits(data as bigint, decimal as number));
-  };
+  }, [address]);
 
-  // CHECK IF ADDRESS HAVE ALLOWENCE IN USDT
-  const fetchApprovedUSDTAmount = async () => {
+  // CHECK IF ADDRESS HAVE ALLOWANCE IN USDT
+  const fetchApprovedUSDTAmount = useCallback(async () => {
     const decimal = await getUSDTTokenDecimals();
     const data = await getApprovedUSDTAmount(address as Hex);
     console.log("data", formatUnits(data as bigint, decimal as number));
     setApprovedAmount(formatUnits(data as bigint, decimal as number));
-  };
+  }, [address]); 
 
   useEffect(() => {
     if (address) {
       selectedCoin === "1" && fetchApprovedUSDTAmount();
       selectedCoin === "2" && fetchApprovedUSDCAmount();
     }
-  }, [address, selectedCoin, isApproving, isNFTMinting]);
+  }, [address, selectedCoin, isApproving, isNFTMinting, fetchApprovedUSDTAmount, fetchApprovedUSDCAmount]);
 
   useEffect(() => {
     fetchPhysicalAttendeeCount();
@@ -226,7 +229,7 @@ const MintingCard = () => {
       fetchIsWhitelisted();
       fetchIsDiscounted();
     }
-  }, [address]);
+  }, [address, fetchIsWhitelisted, fetchIsDiscounted]);
 
   useEffect(() => {
     fetchMaxSupply();
@@ -237,28 +240,28 @@ const MintingCard = () => {
   useEffect(() => {
     fetchUSDPriceForToken();
     fetchUSDDiscountPriceForToken();
-  }, [selectedCoin]);
+  }, [selectedCoin, fetchUSDPriceForToken, fetchUSDDiscountPriceForToken]);
 
   // CALCULATE TOTAL ETH PRICE
   useEffect(() => {
     if (isVirtualAttendee || isDiscounted) {
       if (selectedCoin === "0") {
-        setTotalEthPrice(discountEthPrice);
+        setTotalPrice(discountEthPrice);
       } else if (selectedCoin === "1" || selectedCoin === "2") {
-        setTotalEthPrice(discountUsdPrice);
+        setTotalPrice(discountUsdPrice);
       }
     } else {
       if (selectedCoin === "0") {
-        setTotalEthPrice(ethPrice);
+        setTotalPrice(ethPricePerToken);
       } else if (selectedCoin === "1" || selectedCoin === "2") {
-        setTotalEthPrice(usdPrice);
+        setTotalPrice(usdPrice);
       }
     }
   }, [
     isVirtualAttendee,
     isDiscounted,
     selectedCoin,
-    ethPrice,
+    ethPricePerToken,
     usdPrice,
     discountEthPrice,
     discountUsdPrice,
@@ -299,7 +302,7 @@ const MintingCard = () => {
         functionName: "approve",
         args: [
           NFT_CONTRACT_ADDRESS,
-          parseUnits(totalEthPrice, decimal as number),
+          parseUnits(totalPrice, decimal as number),
         ],
       });
 
@@ -350,7 +353,7 @@ const MintingCard = () => {
         address: NFT_CONTRACT_ADDRESS,
         functionName: "mintToken",
         args: [parseInt(selectedCoin), !isVirtualAttendee],
-        value: parseEther(selectedCoin === "0" ? totalEthPrice : "0"),
+        value: parseEther(selectedCoin === "0" ? totalPrice : "0"),
       });
       console.log("result", result);
       const transactionReceipt = await waitForTransactionReceipt(config, {
@@ -424,7 +427,7 @@ const MintingCard = () => {
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
               <div className="controller-label">Cost</div>
               <div className="controller-input">
-                {totalEthPrice}{" "}
+                {totalPrice}{" "}
                 {selectedCoin === "0"
                   ? "ETH"
                   : selectedCoin === "2"
@@ -450,17 +453,12 @@ const MintingCard = () => {
                   </Button>
                 )}
 
-                {!isNFTMinting &&
-                  (selectedCoin === "0" ||
-                    (selectedCoin != "0" &&
-                      parseInt(approvedAmount) >= parseInt(totalEthPrice))) && (
+                {!isNFTMinting && (selectedCoin === "0" || (selectedCoin != "0" && parseInt(approvedAmount) >= parseInt(totalPrice))) && (
                     <Button
                       onClick={handleMinting}
                       disabled={
                         !isVirtualAttendee &&
-                        (!isWhitelisted ||
-                          parseInt(maxSupply as string) <=
-                            physicalAttendeeCount)
+                        (!isWhitelisted || maxSupply <= physicalAttendeeCount)
                       }
                       className="bg-[#061021] text-white hover:bg-[#08273A] hover:text-white w-full"
                     >
@@ -470,7 +468,7 @@ const MintingCard = () => {
 
                 {!isApproving &&
                   selectedCoin != "0" &&
-                  !(parseInt(approvedAmount) >= parseInt(totalEthPrice)) && (
+                  !(parseInt(approvedAmount) >= parseInt(totalPrice)) && (
                     <Button
                       className="bg-[#061021] text-white hover:bg-[#08273A] hover:text-white w-full"
                       onClick={handleApprove}

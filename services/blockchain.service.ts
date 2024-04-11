@@ -43,8 +43,7 @@ const USDTContract = getContract({
 
 export const getMaxSupply = async () => {
   try {
-    const result = await contract.read.MAX_PHYSICAL_SUPPLY();
-    return result;
+    return contract.read.MAX_PHYSICAL_SUPPLY();
   } catch (error) {
     console.log("Error while fetching max supply", error);
   }
