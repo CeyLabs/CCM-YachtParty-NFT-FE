@@ -1,16 +1,15 @@
-"use client"
+"use client";
 import React from "react";
-import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect"
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 const TagLine = () => {
-
   const words = [
     {
-      text: "Sri Lanka's",
+      text: "Ceylon",
       className: "text-slate-400 uppercase",
     },
     {
-      text: "First",
+      text: "Halving",
       className: "text-slate-400 uppercase",
     },
     {
@@ -30,6 +29,5 @@ const TagLine = () => {
     </div>
   );
 }
-
 
 export default TagLine;
