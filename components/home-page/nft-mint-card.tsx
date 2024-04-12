@@ -412,7 +412,7 @@ const MintingCard = () => {
   const physicalTokensAvailableToMint = maxSupply <= physicalAttendeeCount;
   const hasPendingAction = isNFTMinting || isApproving;
   const showApproveButton = selectedCoin !== '0' && !isApproveAmountIsEnoughForMint && !hasPendingAction;
-  const buttonDisabled = (!isVirtualAttendee && (!isWhitelisted || physicalTokensAvailableToMint)) || hasPendingAction;
+  const buttonDisabled = (!isVirtualAttendee && (!isWhitelisted || physicalTokensAvailableToMint)) || hasPendingAction || !address;
 
   return (
     <div className="minting-card-container">
