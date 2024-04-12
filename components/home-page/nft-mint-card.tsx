@@ -342,8 +342,13 @@ const MintingCard = () => {
   // REDIRECT TO MINTED NFT TX
   const handleTxView = (transactionReceipt: any) => {
     router.push(
-      `https://sepolia.arbiscan.io/tx/${transactionReceipt.transactionHash}`
+      `https://arbiscan.io/tx/${transactionReceipt.transactionHash}`
     );
+  };
+
+  // REDIRECT TO OPEN SEA
+  const handleOpenSeaView = () => {
+    router.push(`https://opensea.io/assets/arbitrum/${NFT_CONTRACT_ADDRESS}/${physicalAttendeeCount + virtualAttendeeCount}`);
   };
 
   // MINTING NFT
@@ -370,12 +375,20 @@ const MintingCard = () => {
         },
         description: "Token minted successfully.",
         action: (
-          <ToastAction
+          <>
+            <ToastAction
             onClick={() => handleTxView(transactionReceipt)}
             altText="Try again"
           >
             View Tx
           </ToastAction>
+          <ToastAction
+            onClick={() => handleOpenSeaView()}
+            altText="Try again"
+          >
+            Open sea
+          </ToastAction>
+          </>
         ),
       });
     } catch (e: any) {
