@@ -5,6 +5,7 @@ import NavigationBar from "@/components/home-page/nav-bar";
 import MintingCard from "./nft-mint-card";
 import TagLine from "./tag-line";
 import { AccordionDemo } from "./faq";
+import Sponsors from "./sponsor-logo";
 
 
 
@@ -17,6 +18,7 @@ const HomePageView = () => {
       <NavigationBar />
       <TagLine />
       <MintingCard />
+      <Sponsors />
       <AccordionDemo/>
       
     </div>
