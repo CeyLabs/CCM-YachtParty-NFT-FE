@@ -106,6 +106,7 @@ export const getVirtualTokenIds = async () => {
 export const isWhitelistedCheck = async (address: string) => {
   try {
     const result = await contract.read.isAddressWhitelisted([address as Hex]);
+    console.log('meow', result, address)
     return result;
   } catch (error) {
     console.log("Error while checking is whitelisted", error);
@@ -145,6 +146,7 @@ export const getApprovedUSDTAmount = async (address: string) => {
       address,
       NFT_CONTRACT_ADDRESS,
     ]);
+    console.log('meow', result, address);
     return result;
   } catch (error) {
     console.log("Error while checking is approved usdt", error);
@@ -157,6 +159,7 @@ export const getApprovedUSDCAmount = async (address: string) => {
       address,
       NFT_CONTRACT_ADDRESS,
     ]);
+    console.log('hello', result, address, NFT_CONTRACT_ADDRESS)
     return result;
   } catch (error) {
     console.log("Error while checking is approved usdc", error);
