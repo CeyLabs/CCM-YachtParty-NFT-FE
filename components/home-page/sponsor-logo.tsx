@@ -57,10 +57,20 @@ const Sponsors: React.FC = () => {
       <div>
         <a target="_blank" href="https://ceylonnewsfactory.lk/">
             <Image
-            src="/images/sponsors/CNF logo .png"
+            src="/images/sponsors/CNF logo.png"
             alt="Ceylon News Factory"
             width={60}
             height={60}
+            />
+        </a>
+      </div>
+      <div>
+        <a target="_blank" href="https://nelnamango.com/">
+            <Image
+            src="/images/sponsors/Nelna Mango.png"
+            alt="Nelna Agri Development"
+            width={80}
+            height={80}
             />
         </a>
       </div>
