@@ -15,13 +15,13 @@ import { Link } from "lucide-react";
         <AccordionItem value="item-1">
           <AccordionTrigger>🛥 What is the Halving Yacht Party?</AccordionTrigger>
           <AccordionContent>
-            The Halving Yacht Party is an exclusive event limited to 50 participants, organized by Ceylon Crypto Meetup. It's an opportunity for networking and celebration within the crypto community.
+            The Halving Yacht Party is an exclusive event limited to 50 participants, organized by Ceylon Crypto Meetup. It&apos;s an opportunity for networking and celebration within the crypto community.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>🏖 How can I attend to this Party?</AccordionTrigger>
           <AccordionContent>
-            To attend the Halving Yacht Party, you need to mint a non-virtual ticket through our NFT ticket minting page. Only 50 non-virtual tickets will be available. Alternatively, if you're interested in a virtual ticket, there may be some future benefits attached 😉 
+            To attend the Halving Yacht Party, you need to mint a non-virtual ticket through our NFT ticket minting page. Only 50 non-virtual tickets will be available. Alternatively, if you&apos;re interested in a virtual ticket, there may be some future benefits attached 😉 
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
@@ -37,7 +37,7 @@ import { Link } from "lucide-react";
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-5">
-          <AccordionTrigger>✅ How can I qualify for a discounted ticket??</AccordionTrigger>
+          <AccordionTrigger>🗝 How can I qualify for a discounted ticket??</AccordionTrigger>
           <AccordionContent>
             <ul>
                 <li>You can qualify for a discounted ticket if you hold the CCM genesis NFT. Alternatively, you may also qualify for a discounted ticket if you meet one or more of the following criteria:</li>
@@ -52,7 +52,7 @@ import { Link } from "lucide-react";
                     </li>
                     <br></br>
                     <li>
-                        &nbsp;&nbsp;&nbsp;&nbsp;📜 Belong to specific whitelists provided through <a target="_blank" href="https://t.me/cryptokalliya" style={{color:"#F6931A"}}>Crypto Kalliya</a> Telegram and <a target="_blank" href="https://chat.whatsapp.com/JnrIht3av6oJxo9oyOyKYQ" style={{color:"#F6931A"}}>Ceylon Cash</a> Whatsapp Groups.
+                        &nbsp;&nbsp;&nbsp;&nbsp;📜 Belong to specific whitelists provided through <a target="_blank" href="https://t.me/cryptokalliya" style={{color:"#F6931A"}}>Crypto Kalliya Telegram</a> and <a target="_blank" href="https://chat.whatsapp.com/JnrIht3av6oJxo9oyOyKYQ" style={{color:"#F6931A"}}>Ceylon Cash Whatsapp</a> Groups.
                     </li>
                 </ul>
             </ul>
@@ -67,7 +67,7 @@ import { Link } from "lucide-react";
         <AccordionItem value="item-7">
           <AccordionTrigger>❌ What happens if I miss out on minting a ticket?</AccordionTrigger>
           <AccordionContent>
-            If you miss out on minting a physical ticket, unfortunately, you won't be able to attend the Halving Yacht Party. Ensure you stay updated on announcements for future events and opportunities within the Ceylon Crypto Meetup community.
+            If you miss out on minting a physical ticket, unfortunately, you won&apos;t be able to attend the Halving Yacht Party. Ensure you stay updated on announcements for future events and opportunities within the Ceylon Crypto Meetup community.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
