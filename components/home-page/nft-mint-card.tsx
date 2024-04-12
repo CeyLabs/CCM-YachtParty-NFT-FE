@@ -83,7 +83,7 @@ const CoinSelectorDropdown = ({
         className="border border-white/[0.2]"
         onSelect={(e) => console.log(e)}
       >
-        <SelectGroup className="text-slate-200 font-['Exo']">
+        <SelectGroup className="text-slate-200">
           {coins.map((coin, index) => (
             <SelectItem key={index} value={coin.value}>
               <div className="flex items-center justify-between">
@@ -122,7 +122,7 @@ const MintingCard = () => {
   const [maxSupply, setMaxSupply] = useState<number>(0);
   const [physicalAttendeeCount, setPhysicalAttendeeCount] = useState(0);
   const [virtualAttendeeCount, setVirtualAttendeeCount] = useState(0);
-  
+
   const [ethPricePerToken, setEthPricePerToken] = useState("0");
   const [discountEthPrice, setDiscountEthPrice] = useState("0");
   const [usdPrice, setUsdPrice] = useState("0");
@@ -213,7 +213,7 @@ const MintingCard = () => {
     const data = await getApprovedUSDTAmount(address as Hex);
     console.log("Approved USDT amount: ", formatUnits(data as bigint, decimal as number));
     setApprovedAmount(formatUnits(data as bigint, decimal as number));
-  }, [address]); 
+  }, [address]);
 
   useEffect(() => {
     if (address) {
@@ -279,7 +279,7 @@ const MintingCard = () => {
       let contract;
       let abi;
 
-      if(selectedCoin === "0") return;
+      if (selectedCoin === "0") return;
 
       switch (selectedCoin) {
         case "1":
@@ -294,7 +294,7 @@ const MintingCard = () => {
           abi = USDC_ABI;
           break;
 
-        default: 
+        default:
           throw Error('Unknown token selected')
       }
 
@@ -377,17 +377,17 @@ const MintingCard = () => {
         action: (
           <>
             <ToastAction
-            onClick={() => handleTxView(transactionReceipt)}
-            altText="Try again"
-          >
-            View Tx
-          </ToastAction>
-          <ToastAction
-            onClick={() => handleOpenSeaView()}
-            altText="Try again"
-          >
-            Open sea
-          </ToastAction>
+              onClick={() => handleTxView(transactionReceipt)}
+              altText="Try again"
+            >
+              View Tx
+            </ToastAction>
+            <ToastAction
+              onClick={() => handleOpenSeaView()}
+              altText="Try again"
+            >
+              Open sea
+            </ToastAction>
           </>
         ),
       });
@@ -426,13 +426,13 @@ const MintingCard = () => {
 
           <div className="minting-controls flex flex-col min-w-[300px]">
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label font-['Exo']">Remaining</div>
-              <div className="controller-input font-['Exo']">
+              <div className="controller-label">Remaining</div>
+              <div className="controller-input">
                 {isVirtualAttendee ? virtualAttendeeCount : physicalAttendeeCount}{" "} / {isVirtualAttendee ? "∞" : maxSupply}
               </div>
             </div>
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label font-['Exo']">Virtual Attendant</div>
+              <div className="controller-label">Virtual Attendant</div>
               <div className="controller-input">
                 <Switch
                   disabled={hasPendingAction}
@@ -443,15 +443,15 @@ const MintingCard = () => {
             </div>
 
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label font-['Exo']">Cost</div>
-              <div className="controller-input font-['Exo']">
+              <div className="controller-label">Cost</div>
+              <div className="controller-input">
                 {totalPrice}{" "}
                 {selectedCoin === "0" && "ETH"}
                 {selectedCoin === "1" && "USDT"}
                 {selectedCoin === "2" && "USDC"}
               </div>
             </div>
-            <div className="minting-button-section flex w-full space-x-1 mt-4 font-['Exo']">
+            <div className="minting-button-section flex w-full space-x-1 mt-4">
               <div className="coin-selector">
                 <CoinSelectorDropdown
                   selectedCoin={selectedCoin}
@@ -461,12 +461,12 @@ const MintingCard = () => {
               </div>
               <div className="minting-button w-full">
                 <Button
-                    onClick={!hasPendingAction && isApproveAmountIsEnoughForMint ? handleMint : handleApprove }
-                    disabled={buttonDisabled}
-                    className="bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white w-full"
-                  >
-                    { !hasPendingAction && (showApproveButton ? "Approve" : "Mint") }
-                    { hasPendingAction && <Loader2 className="w-4 h-4 animate-spin" /> }
+                  onClick={!hasPendingAction && isApproveAmountIsEnoughForMint ? handleMint : handleApprove}
+                  disabled={buttonDisabled}
+                  className="bg-[#061021] text-white hover:bg-[#08273A] hover:text-white w-full"
+                >
+                  {!hasPendingAction && (showApproveButton ? "Approve" : "Mint")}
+                  {hasPendingAction && <Loader2 className="w-4 h-4 animate-spin" />}
                 </Button>
               </div>
             </div>
