@@ -1,12 +1,11 @@
 "use client";
 
 import MintingCard from "@/components/home/MintingCard";
-import { Card, Checkbox, Col, Image, Row, Space } from "antd";
+import { Checkbox, Col, Image, Row, Space } from "antd";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useAccount, useChainId } from "wagmi";
 import axios from "axios";
-import { ColorFormat } from "antd/es/color-picker/interface";
 
 const HomeView: React.FC = () => {
   const { address } = useAccount();
