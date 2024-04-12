@@ -432,7 +432,7 @@ const MintingCard = () => {
               </div>
             </div>
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label">Virtual Attendant</div>
+              <div className="controller-label">Virtual Attendee</div>
               <div className="controller-input">
                 <Switch
                   disabled={hasPendingAction}
