@@ -46,9 +46,11 @@ import {
 const CoinSelectorDropdown = ({
   selectedCoin,
   setSelectedCoin,
+  disabled,
 }: {
   selectedCoin: string;
   setSelectedCoin: Function;
+  disabled: boolean;
 }) => {
   const coins = [
     {
@@ -72,6 +74,7 @@ const CoinSelectorDropdown = ({
     <Select
       onValueChange={(coin) => setSelectedCoin(coin)}
       value={selectedCoin}
+      disabled={disabled}
     >
       <SelectTrigger className="w-[150px] border border-white/[0.2] text-slate-200">
         <SelectValue placeholder="Select a coin" />
@@ -395,7 +398,7 @@ const MintingCard = () => {
   const physicalTokensAvailableToMint = maxSupply <= physicalAttendeeCount;
   const hasPendingAction = isNFTMinting || isApproving;
   const showApproveButton = selectedCoin !== '0' && !isApproveAmountIsEnoughForMint && !hasPendingAction;
-  const buttonDisabled = !isVirtualAttendee && (!isWhitelisted || physicalTokensAvailableToMint)
+  const buttonDisabled = (!isVirtualAttendee && (!isWhitelisted || physicalTokensAvailableToMint)) || hasPendingAction;
 
   return (
     <div className="minting-card-container">
@@ -419,6 +422,7 @@ const MintingCard = () => {
               <div className="controller-label">Virtual Attendant</div>
               <div className="controller-input">
                 <Switch
+                  disabled={hasPendingAction}
                   checked={isVirtualAttendee}
                   onCheckedChange={setIsVirtualAttendee}
                 />
@@ -439,6 +443,7 @@ const MintingCard = () => {
                 <CoinSelectorDropdown
                   selectedCoin={selectedCoin}
                   setSelectedCoin={setSelectedCoin}
+                  disabled={hasPendingAction}
                 />
               </div>
               <div className="minting-button w-full">
