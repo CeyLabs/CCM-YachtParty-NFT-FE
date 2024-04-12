@@ -43,6 +43,7 @@ import {
   isWhitelistedCheck,
 } from "@/services/blockchain.service";
 
+
 const CoinSelectorDropdown = ({
   selectedCoin,
   setSelectedCoin,
@@ -80,7 +81,7 @@ const CoinSelectorDropdown = ({
         <SelectValue placeholder="Select a coin" />
       </SelectTrigger>
       <SelectContent
-        className="border border-white/[0.2]"
+        className="border border-white/[0.2] bg-stone-950"
         onSelect={(e) => console.log(e)}
       >
         <SelectGroup className="text-slate-200">
@@ -333,7 +334,7 @@ const MintingCard = () => {
           border: "1px solid #061021",
         },
         description:
-          e?.errorMessage || "There was a problem with your request.",
+          e.toString() || "There was a problem with your request.",
       });
       console.warn("ERROR while approve", e);
     }
@@ -401,7 +402,7 @@ const MintingCard = () => {
           border: "1px solid #061021",
         },
         description:
-          e?.errorMessage || "There was a problem with your request.",
+           e.toString() || "There was a problem with your request.",
       });
       console.warn("ERROR while minting the NFT", e);
     }
@@ -463,7 +464,7 @@ const MintingCard = () => {
                 <Button
                   onClick={!hasPendingAction && isApproveAmountIsEnoughForMint ? handleMint : handleApprove}
                   disabled={buttonDisabled}
-                  className="bg-[#061021] text-white hover:bg-[#08273A] hover:text-white w-full"
+                  className="bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white w-full"
                 >
                   {!hasPendingAction && (showApproveButton ? "Approve" : "Mint")}
                   {hasPendingAction && <Loader2 className="w-4 h-4 animate-spin" />}

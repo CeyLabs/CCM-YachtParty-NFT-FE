@@ -4,6 +4,10 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 import NavigationBar from "@/components/home-page/nav-bar";
 import MintingCard from "./nft-mint-card";
 import TagLine from "./tag-line";
+import { AccordionDemo } from "./faq";
+
+
+
 
 const HomePageView = () => {
 
@@ -13,6 +17,8 @@ const HomePageView = () => {
       <NavigationBar />
       <TagLine />
       <MintingCard />
+      <AccordionDemo/>
+      
     </div>
   );
 }

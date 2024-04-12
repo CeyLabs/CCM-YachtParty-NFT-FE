@@ -158,7 +158,6 @@ const HomeView: React.FC = () => {
             style={{
               fontSize: "32px",
               fontWeight: "bold",
-              fontFamily:"Exo",
               textAlign: "center",
               marginBottom: "20px",
               color:"#F6931A"
