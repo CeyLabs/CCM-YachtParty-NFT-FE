@@ -48,7 +48,7 @@ export const CustomConnectionButton = () => {
                   >
                     <Button
                       variant="default"
-                      className="rounded-full bg-[#061021] text-white hover:bg-[#08273A] hover:text-white"
+                      className="rounded-full bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white"
                       onClick={openConnectModal}
                     >
                       Connect Wallet
@@ -71,7 +71,7 @@ export const CustomConnectionButton = () => {
                     <Button
                       onClick={openChainModal}
                       variant="default"
-                      className="rounded-full bg-[#061021] text-white hover:bg-[#08273A] hover:text-white"
+                      className="rounded-full bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white"
                     >
                       Wrong network
                     </Button>
@@ -84,7 +84,7 @@ export const CustomConnectionButton = () => {
 
                     onClick={openChainModal}
                     variant="default"
-                    className="hidden sm:flex rounded-full bg-[#061021] text-white hover:bg-[#08273A] hover:text-white mobile-hidden"
+                    className="hidden sm:flex rounded-full bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white mobile-hidden"
                   >
                     {chain.hasIcon && (
                       <div className="mt-3 mr-1">
@@ -108,7 +108,7 @@ export const CustomConnectionButton = () => {
                   <Button
                     onClick={openAccountModal}
                     variant="default"
-                    className="rounded-full bg-[#061021] text-white hover:bg-[#08273A] hover:text-white"
+                    className="rounded-full bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white"
                   >
                     {chain.hasIcon && (
                       <div className="mt-3 mr-1 block sm:hidden">

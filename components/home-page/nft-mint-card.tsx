@@ -83,7 +83,7 @@ const CoinSelectorDropdown = ({
         className="border border-white/[0.2]"
         onSelect={(e) => console.log(e)}
       >
-        <SelectGroup className="text-slate-200 ">
+        <SelectGroup className="text-slate-200 font-['Exo']">
           {coins.map((coin, index) => (
             <SelectItem key={index} value={coin.value}>
               <div className="flex items-center justify-between">
@@ -426,13 +426,13 @@ const MintingCard = () => {
 
           <div className="minting-controls flex flex-col min-w-[300px]">
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label">Remaining</div>
-              <div className="controller-input">
+              <div className="controller-label font-['Exo']">Remaining</div>
+              <div className="controller-input font-['Exo']">
                 {isVirtualAttendee ? virtualAttendeeCount : physicalAttendeeCount}{" "} / {isVirtualAttendee ? "∞" : maxSupply}
               </div>
             </div>
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label">Virtual Attendant</div>
+              <div className="controller-label font-['Exo']">Virtual Attendant</div>
               <div className="controller-input">
                 <Switch
                   disabled={hasPendingAction}
@@ -443,15 +443,15 @@ const MintingCard = () => {
             </div>
 
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label">Cost</div>
-              <div className="controller-input">
+              <div className="controller-label font-['Exo']">Cost</div>
+              <div className="controller-input font-['Exo']">
                 {totalPrice}{" "}
                 {selectedCoin === "0" && "ETH"}
                 {selectedCoin === "1" && "USDT"}
                 {selectedCoin === "2" && "USDC"}
               </div>
             </div>
-            <div className="minting-button-section flex w-full space-x-1 mt-4">
+            <div className="minting-button-section flex w-full space-x-1 mt-4 font-['Exo']">
               <div className="coin-selector">
                 <CoinSelectorDropdown
                   selectedCoin={selectedCoin}
@@ -463,7 +463,7 @@ const MintingCard = () => {
                 <Button
                     onClick={!hasPendingAction && isApproveAmountIsEnoughForMint ? handleMint : handleApprove }
                     disabled={buttonDisabled}
-                    className="bg-[#061021] text-white hover:bg-[#08273A] hover:text-white w-full"
+                    className="bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white w-full"
                   >
                     { !hasPendingAction && (showApproveButton ? "Approve" : "Mint") }
                     { hasPendingAction && <Loader2 className="w-4 h-4 animate-spin" /> }
