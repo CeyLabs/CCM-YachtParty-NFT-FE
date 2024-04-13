@@ -427,7 +427,7 @@ const MintingCard = () => {
 
           <div className="minting-controls flex flex-col min-w-[300px]">
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label">Remaining Tickets</div>
+              <div className="controller-label">Minting Status</div>
               <div className="controller-input">
                 {isVirtualAttendee ? virtualAttendeeCount : physicalAttendeeCount}{" "} / {isVirtualAttendee ? "∞" : maxSupply}
               </div>
