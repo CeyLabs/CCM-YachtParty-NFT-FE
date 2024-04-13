@@ -25,7 +25,8 @@ const TagLine = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <TypewriterEffectSmooth words={words} />
-      <div className="tag text-slate-300 pb-4">Mint your NFT</div>
+      <div className="tag text-slate-300 pb-2">Mint your NFT</div>
+      <div className="tag text-sm text-slate-400 pb-4">Register in <a target="_blank" href="https://lu.ma/CeylonYatchParty" style={{color:"#F6931A"}}>lu.ma</a> for the whitelisting process</div>
     </div>
   );
 }

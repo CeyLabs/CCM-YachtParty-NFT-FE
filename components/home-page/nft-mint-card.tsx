@@ -417,7 +417,7 @@ const MintingCard = () => {
   return (
     <div className="minting-card-container">
       <div className="flex flex-col items-center justify-center">
-        <div className="border border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-500">
+        <div className="border border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-500 rounded">
           {/* <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
           <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-white" />
           <Icon className="absolute h-6 w-6 -top-3 -right-3 text-white" />
