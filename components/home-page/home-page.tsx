@@ -20,7 +20,6 @@ const HomePageView = () => {
       <MintingCard />
       <Sponsors />
       <AccordionDemo/>
-      
     </div>
   );
 }

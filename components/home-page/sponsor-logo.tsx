@@ -5,8 +5,8 @@ import { CustomConnectionButton } from "@/components/wallet-connect/wallet-conne
 
 const Sponsors: React.FC = () => {
   return (
-    <header className="sticky pt-20 flex h-full items-center gap-4 px-4 md:px-10 md:mx-10 justify-between">
-      <div>
+    <div className="sticky pt-20 flex h-full items-center gap-4 px-4 md:px-10 md:mx-10 justify-between">
+      <div >
         <a target="_blank" href="https://t.me/cryptokalliya">
             <Image
             src="/images/sponsors/CK_White.png"
@@ -74,7 +74,7 @@ const Sponsors: React.FC = () => {
             />
         </a>
       </div>
-    </header>
+    </div>
   );
 }
 
