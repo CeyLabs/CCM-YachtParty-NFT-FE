@@ -5,8 +5,7 @@ import NavigationBar from "@/components/home-page/nav-bar";
 import MintingCard from "./nft-mint-card";
 import TagLine from "./tag-line";
 import { AccordionDemo } from "./faq";
-// import  { CarouselDemo } from "./sponsor-logo";
-import Sponsors from "./sponsor-logo";
+import  { CarouselDemo } from "./sponsor-logo";
 import FooterBar from "./footer";
 
 
@@ -21,8 +20,7 @@ const HomePageView = () => {
       <NavigationBar />
       <TagLine />
       <MintingCard />
-      {/* <CarouselDemo /> */}
-      <Sponsors />
+      <CarouselDemo />
       <AccordionDemo/>
       <FooterBar />
     </div>
