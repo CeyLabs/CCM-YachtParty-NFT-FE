@@ -25,7 +25,7 @@ const TagLine = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <TypewriterEffectSmooth words={words} />
-      <div className="tag text-slate-200">Mint your NFT</div>
+      <div className="tag text-slate-300 pb-4">Mint your NFT</div>
     </div>
   );
 }
