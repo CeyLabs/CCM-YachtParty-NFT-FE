@@ -11,7 +11,7 @@ import { Link } from "lucide-react";
   
   export function AccordionDemo() {
     return (
-      <Accordion type="single" collapsible className="relative mx-auto w-full lg:w-1/2 px-10 py-20">
+      <Accordion type="single" collapsible className="relative mx-auto w-full lg:w-1/2 px-10 py-4">
         <AccordionItem value="item-1">
           <AccordionTrigger>🛥 What is the Halving Yacht Party?</AccordionTrigger>
           <AccordionContent>
