@@ -71,6 +71,8 @@ const CoinSelectorDropdown = ({
     },
   ];
 
+  console.log(selectedCoin)
+
   return (
     <Select
       onValueChange={(coin) => setSelectedCoin(coin)}
@@ -354,8 +356,16 @@ const MintingCard = () => {
 
   // MINTING NFT
   const handleMint = async () => {
+    console.log('handlemint')
     try {
       setIsNFTMinting(true);
+      console.log('meow', {
+        abi: NFT_ABI,
+        address: NFT_CONTRACT_ADDRESS,
+        functionName: "mintToken",
+        args: [parseInt(selectedCoin), !isVirtualAttendee],
+        value: parseEther(selectedCoin === "0" ? totalPrice : "0"),
+      })
       const result = await writeContract(config, {
         abi: NFT_ABI,
         address: NFT_CONTRACT_ADDRESS,
@@ -462,7 +472,7 @@ const MintingCard = () => {
               </div>
               <div className="minting-button w-full">
                 <Button
-                  onClick={!hasPendingAction && isApproveAmountIsEnoughForMint ? handleMint : handleApprove}
+                  onClick={!hasPendingAction && (isApproveAmountIsEnoughForMint || selectedCoin === '0') ? handleMint : handleApprove}
                   disabled={buttonDisabled}
                   className="bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white w-full"
                 >
