@@ -462,7 +462,7 @@ const MintingCard = () => {
               </div>
               <div className="minting-button w-full">
                 <Button
-                  onClick={!hasPendingAction && isApproveAmountIsEnoughForMint ? handleMint : handleApprove}
+                  onClick={!hasPendingAction && (isApproveAmountIsEnoughForMint || selectedCoin === '0') ? handleMint : handleApprove}
                   disabled={buttonDisabled}
                   className="bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white w-full"
                 >
