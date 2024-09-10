@@ -3,18 +3,18 @@ import type { Config } from "tailwindcss";
 
 // Required utility from Tailwind CSS to flatten color palettes
 const {
-  default: flattenColorPalette
+  default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 // Plugin for adding CSS variables for colors
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
   );
 
   addBase({
-    ":root": newVars
+    ":root": newVars,
   });
 }
 
@@ -25,15 +25,15 @@ const config: Config = {
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}"
+    "./src/**/*.{ts,tsx}",
   ],
   theme: {
     container: {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px"
-      }
+        "2xl": "1400px",
+      },
     },
     extend: {
       colors: {
@@ -44,18 +44,18 @@ const config: Config = {
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))"
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))"
-        }
+          foreground: "hsl(var(--secondary-foreground))",
+        },
         // Additional color definitions...
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)"
+        sm: "calc(var(--radius) - 4px)",
       },
       // Additional extended theme configurations...
       keyframes: {
@@ -72,12 +72,12 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-    }
+    },
   },
   plugins: [
     require("tailwindcss-animate"), // Your existing animation plugin
-    addVariablesForColors // Adding the color variables plugin
-  ]
+    addVariablesForColors, // Adding the color variables plugin
+  ],
 };
 
 export default config;

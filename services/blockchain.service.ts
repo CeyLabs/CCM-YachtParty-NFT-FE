@@ -157,9 +157,9 @@ export const getApprovedUSDCAmount = async (address: string) => {
       address,
       NFT_CONTRACT_ADDRESS,
     ]);
-    console.log('hello', result, address, NFT_CONTRACT_ADDRESS)
+    console.log("hello", result, address, NFT_CONTRACT_ADDRESS);
     return result;
   } catch (error) {
     console.log("Error while checking is approved usdc", error);
   }
-}
+};

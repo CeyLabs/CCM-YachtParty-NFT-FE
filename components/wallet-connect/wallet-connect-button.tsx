@@ -67,7 +67,6 @@ export const CustomConnectionButton = () => {
                       height: "62px",
                     }}
                   >
-
                     <Button
                       onClick={openChainModal}
                       variant="default"
@@ -81,7 +80,6 @@ export const CustomConnectionButton = () => {
               return (
                 <div className="flex space-x-1">
                   <Button
-
                     onClick={openChainModal}
                     variant="default"
                     className="hidden sm:flex rounded-full bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white mobile-hidden"

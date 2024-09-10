@@ -19,6 +19,6 @@ const NavigationBar: React.FC = () => {
       </div>
     </header>
   );
-}
+};
 
 export default NavigationBar;

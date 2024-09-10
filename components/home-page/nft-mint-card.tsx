@@ -43,7 +43,6 @@ import {
   isWhitelistedCheck,
 } from "@/services/blockchain.service";
 
-
 const CoinSelectorDropdown = ({
   selectedCoin,
   setSelectedCoin,
@@ -204,7 +203,10 @@ const MintingCard = () => {
   const fetchApprovedUSDCAmount = useCallback(async () => {
     const decimal = await getUSDCTokenDecimals();
     const data = await getApprovedUSDCAmount(address as Hex);
-    console.log("Approved USDC amount: ", formatUnits(data as bigint, decimal as number));
+    console.log(
+      "Approved USDC amount: ",
+      formatUnits(data as bigint, decimal as number),
+    );
     setApprovedAmount(formatUnits(data as bigint, decimal as number));
   }, [address]);
 
@@ -212,7 +214,10 @@ const MintingCard = () => {
   const fetchApprovedUSDTAmount = useCallback(async () => {
     const decimal = await getUSDTTokenDecimals();
     const data = await getApprovedUSDTAmount(address as Hex);
-    console.log("Approved USDT amount: ", formatUnits(data as bigint, decimal as number));
+    console.log(
+      "Approved USDT amount: ",
+      formatUnits(data as bigint, decimal as number),
+    );
     setApprovedAmount(formatUnits(data as bigint, decimal as number));
   }, [address]);
 
@@ -221,7 +226,14 @@ const MintingCard = () => {
       selectedCoin === "1" && fetchApprovedUSDTAmount();
       selectedCoin === "2" && fetchApprovedUSDCAmount();
     }
-  }, [address, selectedCoin, isApproving, isNFTMinting, fetchApprovedUSDTAmount, fetchApprovedUSDCAmount]);
+  }, [
+    address,
+    selectedCoin,
+    isApproving,
+    isNFTMinting,
+    fetchApprovedUSDTAmount,
+    fetchApprovedUSDCAmount,
+  ]);
 
   useEffect(() => {
     fetchPhysicalAttendeeCount();
@@ -296,17 +308,14 @@ const MintingCard = () => {
           break;
 
         default:
-          throw Error('Unknown token selected')
+          throw Error("Unknown token selected");
       }
 
       const result: any = await writeContract(config, {
         abi: abi,
         address: contract as Hex,
         functionName: "approve",
-        args: [
-          NFT_CONTRACT_ADDRESS,
-          parseUnits(totalPrice, decimal as number),
-        ],
+        args: [NFT_CONTRACT_ADDRESS, parseUnits(totalPrice, decimal as number)],
       });
 
       const transactionReceipt = await waitForTransactionReceipt(config, {
@@ -333,8 +342,7 @@ const MintingCard = () => {
           color: "#FFF",
           border: "1px solid #061021",
         },
-        description:
-          e.toString() || "There was a problem with your request.",
+        description: e.toString() || "There was a problem with your request.",
       });
       console.warn("ERROR while approve", e);
     }
@@ -342,14 +350,14 @@ const MintingCard = () => {
 
   // REDIRECT TO MINTED NFT TX
   const handleTxView = (transactionReceipt: any) => {
-    router.push(
-      `https://arbiscan.io/tx/${transactionReceipt.transactionHash}`
-    );
+    router.push(`https://arbiscan.io/tx/${transactionReceipt.transactionHash}`);
   };
 
   // REDIRECT TO OPEN SEA
   const handleOpenSeaView = () => {
-    router.push(`https://opensea.io/assets/arbitrum/${NFT_CONTRACT_ADDRESS}/${physicalAttendeeCount + virtualAttendeeCount}`);
+    router.push(
+      `https://opensea.io/assets/arbitrum/${NFT_CONTRACT_ADDRESS}/${physicalAttendeeCount + virtualAttendeeCount}`,
+    );
   };
 
   // MINTING NFT
@@ -401,18 +409,24 @@ const MintingCard = () => {
           color: "#FFF",
           border: "1px solid #061021",
         },
-        description:
-           e.toString() || "There was a problem with your request.",
+        description: e.toString() || "There was a problem with your request.",
       });
       console.warn("ERROR while minting the NFT", e);
     }
   };
 
-  const isApproveAmountIsEnoughForMint = parseInt(approvedAmount) >= parseInt(totalPrice);
+  const isApproveAmountIsEnoughForMint =
+    parseInt(approvedAmount) >= parseInt(totalPrice);
   const physicalTokensAvailableToMint = maxSupply <= physicalAttendeeCount;
   const hasPendingAction = isNFTMinting || isApproving;
-  const showApproveButton = selectedCoin !== '0' && !isApproveAmountIsEnoughForMint && !hasPendingAction;
-  const buttonDisabled = (!isVirtualAttendee && (!isWhitelisted || physicalTokensAvailableToMint)) || hasPendingAction || !address;
+  const showApproveButton =
+    selectedCoin !== "0" &&
+    !isApproveAmountIsEnoughForMint &&
+    !hasPendingAction;
+  const buttonDisabled =
+    (!isVirtualAttendee && (!isWhitelisted || physicalTokensAvailableToMint)) ||
+    hasPendingAction ||
+    !address;
 
   return (
     <div className="minting-card-container">
@@ -429,11 +443,16 @@ const MintingCard = () => {
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
               <div className="controller-label">Minting Status</div>
               <div className="controller-input">
-                {isVirtualAttendee ? virtualAttendeeCount : physicalAttendeeCount}{" "} / {isVirtualAttendee ? "∞" : maxSupply}
+                {isVirtualAttendee
+                  ? virtualAttendeeCount
+                  : physicalAttendeeCount}{" "}
+                / {isVirtualAttendee ? "∞" : maxSupply}
               </div>
             </div>
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
-              <div className="controller-label">{isVirtualAttendee ? "CCM Membership" : "Yacht party Attendee"} </div>
+              <div className="controller-label">
+                {isVirtualAttendee ? "CCM Membership" : "Yacht party Attendee"}{" "}
+              </div>
               <div className="controller-input">
                 <Switch
                   disabled={hasPendingAction}
@@ -446,8 +465,7 @@ const MintingCard = () => {
             <div className="controller-row flex text-slate-200 justify-between items-center my-2">
               <div className="controller-label">Cost</div>
               <div className="controller-input">
-                {totalPrice}{" "}
-                {selectedCoin === "0" && "ETH"}
+                {totalPrice} {selectedCoin === "0" && "ETH"}
                 {selectedCoin === "1" && "USDT"}
                 {selectedCoin === "2" && "USDC"}
               </div>
@@ -462,12 +480,20 @@ const MintingCard = () => {
               </div>
               <div className="minting-button w-full">
                 <Button
-                  onClick={!hasPendingAction && (isApproveAmountIsEnoughForMint || selectedCoin === '0') ? handleMint : handleApprove}
+                  onClick={
+                    !hasPendingAction &&
+                    (isApproveAmountIsEnoughForMint || selectedCoin === "0")
+                      ? handleMint
+                      : handleApprove
+                  }
                   disabled={buttonDisabled}
                   className="bg-[#061021] text-white hover:bg-[#F6931A] hover:text-white w-full"
                 >
-                  {!hasPendingAction && (showApproveButton ? "Approve" : "Mint")}
-                  {hasPendingAction && <Loader2 className="w-4 h-4 animate-spin" />}
+                  {!hasPendingAction &&
+                    (showApproveButton ? "Approve" : "Mint")}
+                  {hasPendingAction && (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  )}
                 </Button>
               </div>
             </div>

@@ -35,18 +35,19 @@ const HomeView: React.FC = () => {
         `${
           process.env.NEXT_PUBLIC_ZERION_BASE_URL
         }/wallets/${`${address}`}/portfolio?currency=btc`,
-        options
+        options,
       );
 
       if (response.status === 200) {
         setProfileInBTC(
           response?.data?.data?.attributes?.positions_distribution_by_type
-            ?.wallet
+            ?.wallet,
         );
       }
       console.log(
         "response btc",
-        response?.data?.data?.attributes?.positions_distribution_by_type?.wallet
+        response?.data?.data?.attributes?.positions_distribution_by_type
+          ?.wallet,
       );
     } catch (error) {
       console.log("Error while fetching profile", error);
@@ -103,9 +104,7 @@ const HomeView: React.FC = () => {
                 width={20}
                 height={20}
               />
-              <div style={{ fontSize: "16px" }}>
-                Ceylon Halving Yacht Party
-              </div>
+              <div style={{ fontSize: "16px" }}>Ceylon Halving Yacht Party</div>
             </div>
             <div
               style={{
@@ -121,9 +120,7 @@ const HomeView: React.FC = () => {
                 width={20}
                 height={20}
               />
-              <div style={{ fontSize: "16px" }}>
-                Ceylon Halving Yacht Party
-              </div>
+              <div style={{ fontSize: "16px" }}>Ceylon Halving Yacht Party</div>
             </div>
             <div
               style={{
@@ -139,9 +136,7 @@ const HomeView: React.FC = () => {
                 width={20}
                 height={20}
               />
-              <div style={{ fontSize: "16px" }}>
-                Ceylon Halving Yacht Party
-              </div>
+              <div style={{ fontSize: "16px" }}>Ceylon Halving Yacht Party</div>
             </div>
           </Space>
         </Col>
@@ -160,7 +155,7 @@ const HomeView: React.FC = () => {
               fontWeight: "bold",
               textAlign: "center",
               marginBottom: "20px",
-              color:"#F6931A"
+              color: "#F6931A",
             }}
           >
             Mint Your NFT
@@ -226,7 +221,7 @@ const HomeView: React.FC = () => {
                 <Link
                   target="_blank"
                   href="https://opensea.io/collection/ceylon-crypto-meetup"
-                  style={{color:"#F6931A"}}
+                  style={{ color: "#F6931A" }}
                 >
                   Genesis CCM NFT
                 </Link>{" "}
@@ -266,9 +261,7 @@ const HomeView: React.FC = () => {
                 width={20}
                 height={20}
               />
-              <div style={{ fontSize: "16px" }}>
-                Ceylon Halving Yacht Party
-              </div>
+              <div style={{ fontSize: "16px" }}>Ceylon Halving Yacht Party</div>
             </div>
             <div
               style={{
@@ -284,9 +277,7 @@ const HomeView: React.FC = () => {
                 width={20}
                 height={20}
               />
-              <div style={{ fontSize: "16px" }}>
-                Ceylon Halving Yacht Party
-              </div>
+              <div style={{ fontSize: "16px" }}>Ceylon Halving Yacht Party</div>
             </div>
             <div
               style={{
@@ -302,9 +293,7 @@ const HomeView: React.FC = () => {
                 width={20}
                 height={20}
               />
-              <div style={{ fontSize: "16px" }}>
-                Ceylon Halving Yacht Party
-              </div>
+              <div style={{ fontSize: "16px" }}>Ceylon Halving Yacht Party</div>
             </div>
           </Space>
         </Col>
