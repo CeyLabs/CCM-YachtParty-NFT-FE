@@ -1,3 +1,12 @@
+<p align="center">
+  <a aria-label="License" href="LICENSE">
+    <img alt="" src="https://img.shields.io/github/license/CeyLabs/CCM-YachtParty-NFT-FE?style=for-the-badge&labelColor=000000">
+  </a>
+  <a aria-label="Vercel Deploy Status" href="https://mint.ceylabs.io/">
+    <img alt="" src="https://img.shields.io/github/deployments/CeyLabs/CCM-YachtParty-NFT-FE/Production?style=for-the-badge&labelColor=000&label=vercel&logo=vercel">
+  </a>
+</p>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started Y
